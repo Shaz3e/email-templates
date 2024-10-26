@@ -90,7 +90,7 @@ php artisan vendor:publish --tag=email-templates-all
 * Please help me improve code https://github.com/Shaz3e/email-templates/pulls
 
 #### License
-Email Templates with (S3 Dashboard)[https://github.com/Shaz3e/S3-Dashboard] is licensed under the MIT license. Enjoy!
+Email Templates with [S3 Dashboard](https://github.com/Shaz3e/S3-Dashboard) is licensed under the MIT license. Enjoy!
 
 ## Credit
 * [Shaz3e](https://www.shaz3e.com) | [YouTube](https://www.youtube.com/@shaz3e) | [Facebook](https://www.facebook.com/shaz3e) | [Twitter](https://twitter.com/shaz3e) | [Instagram](https://www.instagram.com/shaz3e) | [LinkedIn](https://www.linkedin.com/in/shaz3e/)
