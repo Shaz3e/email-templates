@@ -82,3 +82,16 @@ Or Publish everything
 ```bash
 php artisan vendor:publish --tag=email-templates-all
 ```
+
+
+#### Contributing
+
+* If you have any suggestions please let me know : https://github.com/Shaz3e/email-templates/pulls.
+* Please help me improve code https://github.com/Shaz3e/email-templates/pulls
+
+#### License
+Email Templates with (S3 Dashboard)[https://github.com/Shaz3e/S3-Dashboard] is licensed under the MIT license. Enjoy!
+
+## Credit
+* [Shaz3e](https://www.shaz3e.com) | [YouTube](https://www.youtube.com/@shaz3e) | [Facebook](https://www.facebook.com/shaz3e) | [Twitter](https://twitter.com/shaz3e) | [Instagram](https://www.instagram.com/shaz3e) | [LinkedIn](https://www.linkedin.com/in/shaz3e/)
+* [Diligent Creators](https://www.diligentcreators.com) | [Facebook](https://www.facebook.com/diligentcreators) | [Instagram](https://www.instagram.com/diligentcreators/) | [Twitter](https://twitter.com/diligentcreator) | [LinkedIn](https://www.linkedin.com/company/diligentcreators/) | [Pinterest](https://www.pinterest.com/DiligentCreators/) | [YouTube](https://www.youtube.com/@diligentcreator) [TikTok](https://www.tiktok.com/@diligentcreators) | [Google Map](https://g.page/diligentcreators)
