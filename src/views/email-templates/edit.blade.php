@@ -43,10 +43,6 @@
                         {{-- /.row --}}
                     </div>
                     {{-- /.card-body --}}
-                    <div class="card-footer">
-                        <x-form.button />
-                    </div>
-                    {{-- /.card-footer --}}
                 </div>
                 {{-- /.card --}}
             </div>
@@ -106,6 +102,10 @@
                         {{-- /.row --}}
                     </div>
                     {{-- /.card-body --}}
+                    <div class="card-footer">
+                        <x-form.button />
+                    </div>
+                    {{-- /.card-footer --}}
                 </div>
                 {{-- /.card --}}
             </div>

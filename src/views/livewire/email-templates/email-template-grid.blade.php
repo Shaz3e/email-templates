@@ -25,8 +25,8 @@
         {{-- /.col --}}
         <div class="col-md-2 col-sm-12 mb-2">
             <div class="d-grid">
-                <x-form.action-link class="btn-sm btn-primary" text="{{ __('button.view') }}" icon="ri-pencil-line"
-                    :route="route(config('email-templates.route_prefix') . '.email-templates.index')" permission="email-template.create" />
+                <x-form.action-link class="btn-sm btn-success" text="{{ __('button.create') }}" icon="ri-pencil-line"
+                    :route="route(config('email-templates.route_prefix') . '.email-templates.create')" permission="email-template.create" />
             </div>
         </div>
         {{-- /.col --}}

@@ -15,10 +15,8 @@
         {{-- .col --}}
         <div class="col-md-2 col-sm-12 mb-2">
             <div class="d-grid">
-                <a href="{{ route(config('email-templates.route_prefix') . '.email-templates.create') }}"
-                    class="btn btn-success btn-sm waves-effect waves-light">
-                    <i class="ri-add-fill align-middle me-2"></i> Create
-                </a>
+                <x-form.action-link class="btn-sm btn-success" text="{{ __('button.create') }}" icon="ri-pencil-line"
+                    :route="route(config('email-templates.route_prefix') . '.email-templates.create')" permission="email-template.create" />
             </div>
         </div>
         {{-- /.col --}}
@@ -43,47 +41,47 @@
             __('email-templates::email-templates.table.is_active'),
         ]" :records="$records">
             @php
-            $totalRecords = $records->total();
-            $currentPage = $records->currentPage();
-            $perPage = $records->perPage();
-            $id = $totalRecords - ($currentPage - 1) * $perPage;
+                $totalRecords = $records->total();
+                $currentPage = $records->currentPage();
+                $perPage = $records->perPage();
+                $id = $totalRecords - ($currentPage - 1) * $perPage;
             @endphp
             @foreach ($records as $record)
-            <tr wire:key="{{ $record->id }}">
-                <td>{{ $id-- }}</td>
-                <td>{{ $record->key }}</td>
-                <td>{{ $record->name }}</td>
-                <td>{{ $record->subject }}</td>
-                <td>
-                    @foreach ($record->placeholders ?? [] as $placeholder)
-                    <span class="badge bg-primary">{{ str_replace(['[', ']','"'], '', $placeholder) }}</span>
-                    @endforeach
-                </td>
-                <td><x-form.toggle-checkbox :record="$record" field="is_active" /></td>
-                <td class="text-end">
-                    @if ($showDeleted)
-                    <x-form.action-button wire:click="confirmRestore({{ $record->id }})"
-                        class="btn-sm btn-warning" text="{{ __('button.restore') }}" icon="ri-delete-bin-7-line"
-                        permission="email-template.restore" />
-                    <x-form.action-button wire:click="confirmForceDelete({{ $record->id }})"
-                        class="btn-sm btn-danger" text="{{ __('button.delete') }}"
-                        permission="email-template.force.delete" />
-                    @else
-                    <x-form.action-link class="btn-sm btn-primary" text="{{ __('button.view') }}"
-                        icon="ri-pencil-line" :route="route(
+                <tr wire:key="{{ $record->id }}">
+                    <td>{{ $id-- }}</td>
+                    <td>{{ $record->key }}</td>
+                    <td>{{ $record->name }}</td>
+                    <td>{{ $record->subject }}</td>
+                    <td>
+                        @foreach ($record->placeholders ?? [] as $placeholder)
+                            <span class="badge bg-primary">{{ str_replace(['[', ']', '"'], '', $placeholder) }}</span>
+                        @endforeach
+                    </td>
+                    <td><x-form.toggle-checkbox :record="$record" field="is_active" /></td>
+                    <td class="text-end">
+                        @if ($showDeleted)
+                            <x-form.action-button wire:click="confirmRestore({{ $record->id }})"
+                                class="btn-sm btn-warning" text="{{ __('button.restore') }}" icon="ri-delete-bin-7-line"
+                                permission="email-template.restore" />
+                            <x-form.action-button wire:click="confirmForceDelete({{ $record->id }})"
+                                class="btn-sm btn-danger" text="{{ __('button.delete') }}"
+                                permission="email-template.force.delete" />
+                        @else
+                            <x-form.action-link class="btn-sm btn-primary" text="{{ __('button.view') }}"
+                                icon="ri-pencil-line" :route="route(
                                     config('email-templates.route_prefix') . '.email-templates.show',
                                     $record->id,
                                 )" permission="email-template.read" />
-                    <x-form.action-link class="btn-sm btn-success" text="{{ __('button.edit') }}"
-                        icon="ri-pencil-line" :route="route(
+                            <x-form.action-link class="btn-sm btn-success" text="{{ __('button.edit') }}"
+                                icon="ri-pencil-line" :route="route(
                                     config('email-templates.route_prefix') . '.email-templates.edit',
                                     $record->id,
                                 )" permission="email-template.update" />
-                    <x-form.action-button wire:click="confirmDelete({{ $record->id }})"
-                        class="btn-sm btn-danger" permission="email-template.delete" />
-                    @endif
-                </td>
-            </tr>
+                            <x-form.action-button wire:click="confirmDelete({{ $record->id }})"
+                                class="btn-sm btn-danger" permission="email-template.delete" />
+                        @endif
+                    </td>
+                </tr>
             @endforeach
         </x-table>
     </div>
