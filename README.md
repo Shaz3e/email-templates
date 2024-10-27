@@ -1,5 +1,11 @@
 # Email Templates
 
+![Packagist Version](https://img.shields.io/packagist/v/shaz3e/email-templates)
+![Packagist Downloads](https://img.shields.io/packagist/dt/shaz3e/email-templates)
+![License](https://img.shields.io/packagist/l/shaz3e/email-templates)
+![Laravel Version](https://img.shields.io/badge/laravel-11.x-blue)
+
+
 Email templates are pre-designed email messages that can be customized to fit your needs. They can be used to send automated emails, such as welcome emails, abandoned cart reminders, and order confirmations all emails will written in html and queueable mean there is no need to create additional jobs or mailable everytime for all your email and best thing is you can write your own email from dashboard and use template placeholders like `{{ name }}` in your email but you need to register placeholders in the specific email.
 
 Before proceeding the installation steps please read the complete documention to take only the step which is necessary for your application. We suggest only publish config file as this may be necessary to manage prefix, routes and middleware and only publish views when you need to modify it. It built with livewire grid view which poll data only visible mode.
