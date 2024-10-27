@@ -19,6 +19,10 @@ Migrate database and permissions
 php artisan migrate
 ```
 
+```bash
+php artisan storage:link
+```
+
 Create template from dashboard visit `http://s3-dashboard.test/manage/email-templates/create`
 
 #### Create Template from Console
