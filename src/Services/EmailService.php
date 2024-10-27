@@ -22,10 +22,7 @@ class EmailService
     {
         try {
             // Fetch the email template by key
-            $template = EmailTemplate::where([
-                'key' => $key,
-                'is_active' => true
-            ])->firstOrFail();
+            $template = EmailTemplate::where('key', $key)->firstOrFail();
 
             // Replace placeholders in the template content and subject
             $content = $this->replacePlaceholders($template->content, $data);

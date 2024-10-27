@@ -62,17 +62,6 @@
                                 </div>
                             </div>
                             {{-- /.col --}}
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <x-form.select name="is_active"
-                                        label="{{ __('email-templates::email-templates.form.is_active') }}"
-                                        :options="[
-                                            0 => __('email-templates::email-templates.form.is_active_0'),
-                                            1 => __('email-templates::email-templates.form.is_active_1'),
-                                        ]" :selected="old('is_active', $option ?? 0)" required="true" />
-                                </div>
-                            </div>
-                            {{-- /.col --}}
                             <div class="col-md-12">
                                 <x-form.text-area label="{{ __('email-templates::email-templates.form.placeholders') }}"
                                     name="placeholders" />

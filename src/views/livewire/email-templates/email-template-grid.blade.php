@@ -11,7 +11,7 @@
             </select>
         </div>
         {{-- /.col --}}
-        <div class="col-md-7 col-sm-12 mb-2">
+        <div class="col-md-9 col-sm-12 mb-2">
             <input type="search" wire:model.live="search" class="form-control form-control-sm" placeholder="Search...">
         </div>
         {{-- .col --}}
@@ -23,20 +23,13 @@
             </select>
         </div>
         {{-- /.col --}}
-        <div class="col-md-2 col-sm-12 mb-2">
-            <div class="d-grid">
-                <x-form.action-link class="btn-sm btn-success" text="{{ __('button.create') }}" icon="ri-pencil-line"
-                    :route="route(config('email-templates.route_prefix') . '.email-templates.create')" permission="email-template.create" />
-            </div>
-        </div>
-        {{-- /.col --}}
     </div>
     {{-- /.row --}}
 
     <div wire:poll.visible>
         <div class="row">
             @foreach ($records as $record)
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="card m-b-30">
                         <div class="card-body">
 

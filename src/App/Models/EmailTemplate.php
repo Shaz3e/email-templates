@@ -13,7 +13,6 @@ class EmailTemplate extends Model
         'subject',
         'placeholders',
         'content',
-        'is_active',
     ];
 
     use SoftDeletes;
@@ -21,7 +20,6 @@ class EmailTemplate extends Model
 
     protected $casts = [
         'placeholders' => 'array',  // Automatically casts JSON to array
-        'is_active' => 'boolean',
     ];
 
     /**
@@ -40,17 +38,6 @@ class EmailTemplate extends Model
             }
         }
         return $content;
-    }
-
-    /**
-     * Scope for active templates.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeActive($query)
-    {
-        return $query->where('is_active', true);
     }
 
     /**

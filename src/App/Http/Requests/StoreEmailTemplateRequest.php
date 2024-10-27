@@ -44,10 +44,6 @@ class StoreEmailTemplateRequest extends FormRequest
             'content' => [
                 'required',
             ],
-            'is_active' => [
-                'required',
-                'boolean'
-            ]
         ];
     }
 }

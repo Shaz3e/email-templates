@@ -47,10 +47,6 @@ class UpdateEmailTemplateRequest extends FormRequest
             'content' => [
                 'required',
             ],
-            'is_active' => [
-                'required',
-                'boolean'
-            ]
         ];
     }
 }

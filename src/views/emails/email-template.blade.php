@@ -3,11 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Email Template</title>
+    <title>{{ $subject }}</title>
 </head>
 
 <body>
-    {!! $content !!}
+    @if ($headerImage)
+        <img src="{{ $headerImage }}" alt="Header Image" style="max-width: 100%;">
+    @endif
+    <div>
+        {!! $content !!}
+    </div>
+    <footer style="background-color: {{ $footerBackgroundColor }}; color: {{ $footerTextColor }}; padding: 10px;">
+        {!! $footerText !!}
+    </footer>
 </body>
 
 </html>

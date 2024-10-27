@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('subject');
             $table->json('placeholders')->nullable();
             $table->longText('content')->nullable();
-            $table->boolean('is_active')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });

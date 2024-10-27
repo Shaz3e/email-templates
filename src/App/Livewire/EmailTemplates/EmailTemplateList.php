@@ -64,25 +64,6 @@ class EmailTemplateList extends Component
     }
 
     /**
-     * Toggle Status
-     */
-    public function toggleStatus($id)
-    {
-        // Get data
-        $emailTemplate = EmailTemplate::find($id);
-
-        // Check user exists
-        if (!$emailTemplate) {
-            $this->dispatch('error', 'User not found!');
-            return;
-        }
-
-        // Change Status
-        $emailTemplate->update(['is_active' => !$emailTemplate->is_active]);
-        $this->dispatch('statusChanged');
-    }
-
-    /**
      * Confirm Delete
      */
     public function confirmDelete($id)

@@ -74,24 +74,7 @@
             {{-- /.card --}}
         </div>
         {{-- /.col --}}
-        <div class="col-md-3 col-sm-12">
-            <div class="card">
-                <div class="card-body">
-                    <small>Status</small>
-                    <h5 class="card-title">
-                        @if ($emailTemplate->is_active == 1)
-                            Active
-                        @else
-                            Inactive
-                        @endif
-                    </h5>
-                </div>
-                {{-- /.card-body --}}
-            </div>
-            {{-- /.card --}}
-        </div>
-        {{-- /.col --}}
-        <div class="col-md-9 col-sm-12">
+        <div class="col-md-12 col-sm-12">
             <div class="card">
                 <div class="card-body">
                     <small>Email Template Tags</small><br>
