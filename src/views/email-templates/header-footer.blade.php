@@ -62,7 +62,7 @@
     <div class="row">
         <div class="col-md-12">
             <h5 class="page-title">Email Preview</h5>
-            <img src="{{ asset($header_image) }}" alt="{{ config('app.name') }}" class="img-fluid" />
+            <img src="{{ asset('storage/'.$header_image) }}" alt="{{ config('app.name') }}" class="img-fluid" />
             <div class="card-text mt-3 mb-3">Email content will be placed here...</div>
             <div style="background-color: {{ $footer_background_color }}; color: {{ $footer_text_color }}">
                 {!! $footer_text !!}

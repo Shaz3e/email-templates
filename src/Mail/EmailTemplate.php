@@ -41,7 +41,7 @@ class EmailTemplate extends Mailable implements ShouldQueue
             'footer_background_color'
         ])->pluck('value', 'name');
 
-        $this->headerImage = url('storage/' . $globalSettings['header_image']);
+         $this->headerImage = url('storage/' . $globalSettings['header_image']);
         $this->footerText = $globalSettings['footer_text'] ?? '';
         $this->footerTextColor = $globalSettings['footer_text_color'] ?? '';
         $this->footerBackgroundColor = $globalSettings['footer_background_color'] ?? '';
