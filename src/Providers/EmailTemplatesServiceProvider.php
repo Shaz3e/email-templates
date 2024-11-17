@@ -28,9 +28,6 @@ class EmailTemplatesServiceProvider extends ServiceProvider
         // Load language files from the package
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'email-templates');
 
-        // Load migrations
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-
         // Load views
         $this->loadViewsFrom(__DIR__ . '/../views', 'email-templates');
 
@@ -42,7 +39,7 @@ class EmailTemplatesServiceProvider extends ServiceProvider
 
             // Views
             __DIR__ . '/../views' => resource_path('views/vendor/email-templates'),
-            
+
             // Migrations
             __DIR__ . '/../database/migrations/create_email_global_settings_table.php' => database_path('migrations/' . date('Y_m_d_His') . '_create_email_global_settings_table.php'),
             __DIR__ . '/../database/migrations/create_email_templates_table.php' => database_path('migrations/' . date('Y_m_d_His', strtotime('+1 second')) . '_create_email_templates_table.php'),
