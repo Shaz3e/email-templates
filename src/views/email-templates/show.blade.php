@@ -132,7 +132,7 @@ $emailService->sendEmailByKey('{{ $emailTemplate->key }}', $user->email);
 @else
 $emailService->sendEmailByKey('{{ $emailTemplate->key }}', $user->email, [
 @foreach ($emailTemplate->placeholders ?? [] as $placeholder)
-'{{ str_replace(['[', ']', '"'], '', $placeholder) }}' => model->{{ str_replace(['[', ']', '"'], '', $placeholder) }},
+'{{ str_replace(['[', ']', '"'], '', $placeholder) }}' => $model->{{ str_replace(['[', ']', '"'], '', $placeholder) }},
 @endforeach
 ]);
 @endif
