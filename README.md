@@ -19,6 +19,12 @@ Install via composer
 composer require shaz3e/email-templates
 ```
 
+Publish migration only
+
+```bash
+php artisan vendor:publish --tag=email-templates-migration
+```
+
 Migrate database and permissions
 
 ```bash
@@ -73,12 +79,6 @@ Publish views only
 
 ```bash
 php artisan vendor:publish --tag=email-templates-view
-```
-
-Publish migration only
-
-```bash
-php artisan vendor:publish --tag=email-templates-migration
 ```
 
 Publish language files only
