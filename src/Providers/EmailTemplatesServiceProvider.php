@@ -39,10 +39,13 @@ class EmailTemplatesServiceProvider extends ServiceProvider
         $this->publishes([
             // Config
             __DIR__ . '/../config/email-templates.php' => config_path('email-templates.php'),
+
             // Views
             __DIR__ . '/../views' => resource_path('views/vendor/email-templates'),
-            // Database
-            __DIR__ . '/../database/migrations' => database_path('migrations'),
+            
+            // Migrations
+            __DIR__ . '/../database/migrations/create_email_global_settings_table.php' => database_path('migrations/' . date('Y_m_d_His') . '_create_email_global_settings_table.php'),
+            __DIR__ . '/../database/migrations/create_email_templates_table.php' => database_path('migrations/' . date('Y_m_d_His', strtotime('+1 second')) . '_create_email_templates_table.php'),
 
             // Language
             __DIR__ . '/../lang' => resource_path('lang/vendor/email-templates'),
@@ -62,7 +65,8 @@ class EmailTemplatesServiceProvider extends ServiceProvider
 
         // Publish migrations (optional)
         $this->publishes([
-            __DIR__ . '/../database/migrations' => database_path('migrations')
+            __DIR__ . '/../database/migrations/create_email_global_settings_table.php' => database_path('migrations/' . date('Y_m_d_His') . '_create_email_global_settings_table.php'),
+            __DIR__ . '/../database/migrations/create_email_templates_table.php' => database_path('migrations/' . date('Y_m_d_His', strtotime('+1 second')) . '_create_email_templates_table.php'),
         ], 'email-templates-migration');
 
         // Publish Language (optional)
