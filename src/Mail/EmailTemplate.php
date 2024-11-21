@@ -3,12 +3,11 @@
 namespace Shaz3e\EmailTemplates\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Shaz3e\EmailTemplates\App\Models\EmailGlobalSetting;
 
-class EmailTemplate extends Mailable implements ShouldQueue
+class EmailTemplate extends Mailable
 {
     use Queueable, SerializesModels;
 
