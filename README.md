@@ -87,12 +87,6 @@ Publish language files only
 php artisan vendor:publish --tag=email-templates-lang
 ```
 
-Or Publish everything
-
-```bash
-php artisan vendor:publish --tag=email-templates-all
-```
-
 
 #### Contributing
 
