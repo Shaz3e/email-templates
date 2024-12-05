@@ -2,6 +2,7 @@
 
 namespace Shaz3e\EmailTemplates\Providers;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 
@@ -23,57 +24,63 @@ class EmailTemplatesServiceProvider extends ServiceProvider
         Livewire::component('email-template-list', \Shaz3e\EmailTemplates\App\Livewire\EmailTemplates\EmailTemplateList::class);
 
         // Load routes
-        $this->loadRoutesFrom(__DIR__ . '/../Routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
 
         // Load language files from the package
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'email-templates');
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'email-templates');
 
         // Load views
-        $this->loadViewsFrom(__DIR__ . '/../views', 'email-templates');
+        $this->loadViewsFrom(__DIR__.'/../views', 'email-templates');
 
+        // Publish assets conditionally
+        $this->publishAssets();
+    }
 
-        // Publish configuration and assets (optional)
+    protected function publishAssets()
+    {
+        // Config
         $this->publishes([
-            // Config
-            __DIR__ . '/../config/email-templates.php' => config_path('email-templates.php'),
-
-            // Views
-            __DIR__ . '/../views' => resource_path('views/vendor/email-templates'),
-
-            // Migrations
-            __DIR__ . '/../database/migrations/create_email_global_settings_table.php' => database_path('migrations/' . date('Y_m_d_His') . '_create_email_global_settings_table.php'),
-            __DIR__ . '/../database/migrations/create_email_templates_table.php' => database_path('migrations/' . date('Y_m_d_His', strtotime('+1 second')) . '_create_email_templates_table.php'),
-
-            // Language
-            __DIR__ . '/../lang' => resource_path('lang/vendor/email-templates'),
-        ], 'email-templates-all');
-
-        // Publish configuration and assets (optional)
-        $this->publishes([
-            // Config
-            // php artisan vendor:publish --tag=email-templates-config
-            __DIR__ . '/../config/email-templates.php' => config_path('email-templates.php'),
+            __DIR__.'/../config/email-templates.php' => config_path('email-templates.php'),
         ], 'email-templates-config');
 
-        // Publish views (optional)
+        // Views
         $this->publishes([
-            __DIR__ . '/../views' => resource_path('views/vendor/email-templates')
+            __DIR__.'/../views' => resource_path('views/vendor/email-templates'),
         ], 'email-templates-view');
 
-        // Publish migrations (optional)
+        // Language files
         $this->publishes([
-            __DIR__ . '/../database/migrations/create_email_global_settings_table.php' => database_path('migrations/' . date('Y_m_d_His') . '_create_email_global_settings_table.php'),
-            __DIR__ . '/../database/migrations/create_email_templates_table.php' => database_path('migrations/' . date('Y_m_d_His', strtotime('+1 second')) . '_create_email_templates_table.php'),
-        ], 'email-templates-migration');
-
-        // Publish Language (optional)
-        $this->publishes([
-            __DIR__ . '/../lang' => resource_path('lang/vendor/email-templates'),
+            __DIR__.'/../lang' => resource_path('lang/vendor/email-templates'),
         ], 'email-templates-lang');
 
-        $this->mergeConfigFrom(
-            __DIR__ . '/../Config/email-templates.php',
-            'email-templates'
-        );
+        // Publish migrations only if they don't already exist
+        $globalSettingsMigrationExists = $this->migrationExists('create_email_global_settings_table.php');
+        $emailTemplatesMigrationExists = $this->migrationExists('create_email_templates_table.php');
+
+        if (! $globalSettingsMigrationExists) {
+            $this->publishes([
+                __DIR__.'/../database/migrations/create_email_global_settings_table.php' => database_path('migrations/'.date('Y_m_d_His').'_create_email_global_settings_table.php'),
+            ], 'email-templates-migration');
+        }
+
+        if (! $emailTemplatesMigrationExists) {
+            $this->publishes([
+                __DIR__.'/../database/migrations/create_email_templates_table.php' => database_path('migrations/'.date('Y_m_d_His', strtotime('+1 second')).'_create_email_templates_table.php'),
+            ], 'email-templates-migration');
+        }
+    }
+
+    /**
+     * Check if a migration already exists in the migrations directory.
+     *
+     * @param  string  $migrationName
+     * @return bool
+     */
+    protected function migrationExists($migrationName)
+    {
+        $migrationsPath = database_path('migrations');
+        $files = File::glob($migrationsPath.'/*_'.$migrationName);
+
+        return ! empty($files);
     }
 }
