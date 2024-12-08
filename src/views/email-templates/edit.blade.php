@@ -155,6 +155,18 @@
         });
     </script>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const subjectInput = document.getElementById('key');
+
+            if (subjectInput) {
+                subjectInput.addEventListener('input', () => {
+                    // Replace spaces with underscores and remove consecutive underscores
+                    subjectInput.value = subjectInput.value
+                        .replace(/ +/g, '_') // Replace one or more spaces with a single underscore
+                        .replace(/_+/g, '_'); // Remove consecutive underscores
+                });
+            }
+        });
         document.getElementById('placeholders').addEventListener('input', function(event) {
             let input = event.target.value;
 
